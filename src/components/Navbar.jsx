@@ -8,8 +8,8 @@ const Navbar = () => {
         </div>
 
         <div className="flex items-center gap-10 text-lg">
-            <Link >Home</Link>
-            <Link>Cart</Link>
+            <Link to='/'>Home</Link>
+            <Link to='/cart'>Cart</Link>
             <span>cart item:0</span>
         </div>
 
