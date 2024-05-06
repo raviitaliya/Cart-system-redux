@@ -1,6 +1,9 @@
 import { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
+import { addCart } from "../store/CartSlice";
 
 const Home = () => {
+  const dispatch = useDispatch();
   const [productData, setProductData] = useState([]);
 
   useEffect(() => {
@@ -16,6 +19,10 @@ const Home = () => {
 
     fetchData();
   }, []);
+
+  const handleaddproduct=(product)=>{
+    dispatch(addCart(product));
+  }
 
   return (
     <div className="pt-20">
@@ -44,6 +51,7 @@ const Home = () => {
                 </p>
 
                 <button
+                onClick={()=>handleaddproduct(product)}
                   type="button"
                   className="mt-3 w-full  rounded-sm bg-black px-2.5 py-1 text-[15px] font-semibold text-white shadow-sm hover:bg-black/80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
                 >
