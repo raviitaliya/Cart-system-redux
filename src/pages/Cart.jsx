@@ -1,8 +1,14 @@
-import { useSelector } from "react-redux"
+import { useSelector,useDispatch } from "react-redux"
+import { removeCart } from "../store/CartSlice"
 
 const Cart = () => {
 
     const product = useSelector(state => state.cart)
+    const dispatch = useDispatch();
+
+    const RemoveItm = (productId) => {
+        dispatch(removeCart(productId))
+    }
   return (
     <div className="pt-20">
         <div>
@@ -24,10 +30,11 @@ const Cart = () => {
                 </p>
 
                 <button
+                onClick={()=>RemoveItm(product.id)}
                   type="button"
                   className="mt-3 w-full  rounded-sm bg-black px-2.5 py-1 text-[15px] font-semibold text-white shadow-sm hover:bg-black/80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
                 >
-                 Remove
+                  Remove
                 </button>
               </div>
             </div>
